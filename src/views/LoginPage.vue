@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import TextInput from "@/components/TextInput.vue";
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -34,24 +35,19 @@ const handleLogin = async () => {
       <h1>Enter to system</h1>
 
       <form @submit.prevent="handleLogin">
-        <div class="form-group">
-          <label for="username">Login:</label>
-          <input
-            id="username"
-            v-model="username"
-            type="text"
-            placeholder="Login"
-          />
+        <div class="input-group">
+          <TextInput
+            label="Login"
+            v-model="username">
+          </TextInput>
         </div>
-
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input
-            id="password"
+        <div class="input-group">
+          <TextInput
+            label="Password"
             v-model="password"
             type="password"
-            placeholder="Password"
-          />
+          >
+          </TextInput>
         </div>
 
         <p v-if="error" class="error">{{ error }}</p>
@@ -86,24 +82,11 @@ h1 {
   color: #333;
 }
 
-.form-group {
-  margin-bottom: 1rem;
-}
-
 label {
   display: block;
   margin-bottom: 0.5rem;
   color: #555;
   font-weight: 500;
-}
-
-input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-  box-sizing: border-box;
 }
 
 input:focus {
@@ -132,5 +115,10 @@ input:focus {
 
 .btn-login:hover {
   background: #5568d3;
+}
+
+.input-group {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 </style>

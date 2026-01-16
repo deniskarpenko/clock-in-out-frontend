@@ -15,7 +15,7 @@ const handleLogin = async () => {
   error.value = ''
 
   if (!username.value || !password.value) {
-    error.value = 'Заполните все поля'
+    error.value = 'Enter login and password'
     return
   }
 
@@ -24,7 +24,7 @@ const handleLogin = async () => {
   if (success) {
     router.push('/')
   } else {
-    error.value = 'Неверный логин или пароль'
+    error.value = 'Incorrect login or password'
   }
 }
 </script>
@@ -64,7 +64,7 @@ const handleLogin = async () => {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #e7f1f1 0%, #53afea 100%);
 }
 
 .login-card {

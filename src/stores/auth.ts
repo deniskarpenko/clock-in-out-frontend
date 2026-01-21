@@ -13,7 +13,7 @@ export const useAuthStore = defineStore('auth', () => {
     currentUser.value = user
   }
 
-  const login = (username: string, password: string) => {
+  const login = (username: string, password: string): boolean => {
     if (username === 'admin' && password === 'admin') {
       isAuthenticated.value = true
       currentUser.value = username
@@ -25,6 +25,10 @@ export const useAuthStore = defineStore('auth', () => {
       return true
     }
     return false
+  }
+
+  const register = (firstName: string, lastName: string, userName: string, password: string): boolean => {
+    return true
   }
 
   const logout = () => {

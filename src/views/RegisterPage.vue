@@ -74,14 +74,14 @@ const resetForm = () => {
           />
         </div>
 
-        <div class="input-row">
+        <div class="input-row mt">
           <TextInput
             label="Username"
             v-model="form.username"
           />
         </div>
 
-        <div class="input-row">
+        <div class="input-row mt">
           <TextInput
             label="Password"
             v-model="form.password"
@@ -91,12 +91,12 @@ const resetForm = () => {
 
         <p v-if="error" class="error">{{ error }}</p>
 
-        <button type="submit" class="btn-login">Register</button>
+        <button type="submit" class="btn-login mt">Register</button>
       </form>
     </div>
   </div>
 </template>
-<style scoped>
+<style>
 .register-container {
   min-height: 100vh;
   display: flex;
@@ -134,5 +134,44 @@ const resetForm = () => {
   flex: 1 0 0%;
   padding-left: 7.5px;
   padding-right: 7.5px;
+}
+
+.mt {
+  margin-top: 8px;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 14px 24px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-login::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.5s ease;
+}
+
+.btn-login:hover::before {
+  left: 100%;
+}
+
+.btn-login:hover {
+  background: #2563eb;
 }
 </style>

@@ -1,6 +1,8 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:80'
+
 export const useAuthStore = defineStore('auth', () => {
   const isAuthenticated = ref(false)
   const currentUser = ref<string | null>(null)
@@ -27,7 +29,11 @@ export const useAuthStore = defineStore('auth', () => {
     return false
   }
 
-  const register = (firstName: string, lastName: string, userName: string, password: string): boolean => {
+  const register = async (firstName: string, lastName: string, userName: string, password: string): boolean => {
+    const response = await fetch(`${API_BASE_URL}/register`, {
+      method: 'POST',
+      body: JSON.stringify({ firstName, lastName, userName, password }),
+    })
     return true
   }
 
@@ -42,6 +48,7 @@ export const useAuthStore = defineStore('auth', () => {
     isAuthenticated,
     currentUser,
     login,
-    logout
+    logout,
+    register,
   }
 })

@@ -28,6 +28,8 @@ const error = ref('')
 const handleRegister = async () => {
   error.value = ''
 
+  await authStore.register(form.firstName, form.lastName, form.avatar)
+
   if (!form.firstName || !form.lastName) {
     error.value = 'Enter first and last name'
     return

@@ -1,8 +1,18 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import axios from '@/utils/axios' // Наш настроенный axios
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:80'
+interface RegisterData {
+  firstName: string
+  lastName: string
+  userName: string
+  password: string
+}
 
+interface ApiResponse<T = any> {
+  data?: T
+  error?: string
+}
 export const useAuthStore = defineStore('auth', () => {
   const isAuthenticated = ref(false)
   const currentUser = ref<string | null>(null)

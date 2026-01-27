@@ -62,7 +62,6 @@ axiosInstance.interceptors.response.use(
     }
 
     if (error.response?.status === 401) {
-      // Очищаем токен и перенаправляем на логин
       localStorage.removeItem('auth_token')
       localStorage.removeItem('current_user')
       window.location.href = '/login'
